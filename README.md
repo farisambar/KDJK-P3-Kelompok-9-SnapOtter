@@ -21,8 +21,6 @@
 
 ---
 
-## Daftar Isi
-
 # Proyek KDJK: Deployment SnapOtter
 
 **Kelompok 9 — Paralel 3**
