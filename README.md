@@ -61,7 +61,7 @@ Berbeda dengan layanan konversi yang sepenuhnya dijalankan pada server penyedia,
 | **Files** | Upload, penyimpanan, serta pengelolaan berkas |
 | **Automate** | Menyusun dan menyimpan rangkaian proses (*pipeline*) |
 
-Pada antarmuka SnapOtter versi 2.2.0 yang digunakan kelompok, katalog menampilkan **243 tools**. Namun , tidak semua tools itu bisa digunkan karena ada fitur fitur yang membutuhkan requirement VPS yang lebih bagus.
+Pada antarmuka SnapOtter versi 2.2.0 yang digunakan kelompok, katalog menampilkan **243 tools**. Namun , tidak semua tools itu bisa digunkan karena ada fitur fitur yang membutuhkan requirement VPS yang lebih tinggi.
 
 **Batasan implementasi:** proyek ini menggunakan VPS **2 vCPU dan RAM 2 GB**, sehingga kami hanya bisa deployment untuk Tier Minimum dan pengujian difokuskan pada fitur non-AI, terutama gambar dan PDF. Fitur pemrosesan video berat serta model AI yang memerlukan memori lebih besar tidak menjadi fokus pengujian. Hal ini merujuk pada panduan resmi dari snapotter https://docs.snapotter.com/guide/low-resource.
 
@@ -192,7 +192,7 @@ File `.env` menyimpan kredensial layanan
 
 #### 5. Mengoptimalkan penggunaan sumber daya
 
-Konfigurasi Compose bawaan memiliki batas memori yang lebih besar daripada RAM VPS kelompok. Karena itu, dibuat file tambahan `compose.minimum.yml` untuk mengatur batas penggunaan sumber daya.
+Konfigurasi Compose bawaan memiliki batas memori yang lebih besar daripada RAM VPS yang digunakan. Oleh karena itu, dibuat file tambahan `compose.minimum.yml` untuk mengatur batas penggunaan sumber daya.
 
 ```bash
 cat > compose.minimum.yml <<'YAML'
