@@ -35,8 +35,7 @@
 | 4 | M0403241165 | Faqih Sahar Ramadhan |
 | 5 | M0403241047 | Azahra Salsabila |
 
-**Alamat aplikasi:** [https://snapotterlab.web.id](https://snapotterlab.web.id)  
-**Repository aplikasi:** [snapotter-hq/SnapOtter](https://github.com/snapotter-hq/SnapOtter)
+**Link Hosted App:** [https://snapotterlab.web.id](https://snapotterlab.web.id)
 
 ## Daftar Isi
 
