@@ -462,31 +462,26 @@ sudo docker compose -f docker-compose.yml -f compose.minimum.yml up -d --no-buil
 Setelah pembaruan selesai, periksa kembali status container dan pastikan aplikasi dapat diakses melalui domain.
 
 
+
 ## Otomatisasi
 
 [`^ kembali ke atas ^`](#top)
 
-Selain instalasi secara manual, `otomatisasi_snapotter.sh` juga dibuat untuk mempermudah instalasi dan pengelolaan SnapOtter pada VPS Ubuntu 24.04.
-
-Skrip ini mengotomatisasi pemasangan Docker, pengunduhan berkas konfigurasi SnapOtter, pembuatan password, penyesuaian sumber daya VPS, menjalankan container, serta konfigurasi Caddy untuk akses HTTPS.
+Skrip `otomatisasi_snapotter.sh` digunakan untuk mengotomatiskan instalasi SnapOtter dari pemasangan Docker hingga konfigurasi Caddy dan HTTPS.
 
 Berkas skrip dapat dilihat pada [otomatisasi_snapotter.sh](otomatisasi_snapotter.sh).
 
-Untuk melakukan instalasi otomatis pada VPS baru, jalankan:
+Sebelum menjalankan skrip, lihat bagian [Prasyarat](#prasyarat) dan pastikan DNS domain sudah diarahkan ke IP publik VPS.
+
+Jalankan perintah berikut pada VPS:
 
 ```bash
-bash otomatisasi_snapotter.sh instal snapotterlab.web.id
+bash otomatisasi_snapotter.sh YOUR_DOMAIN
 ```
 
-Perintah tambahan untuk memeriksa layanan dan melakukan maintenance:
+Ganti `YOUR_DOMAIN` dengan nama domain lengkap beserta ekstensinya, misalnya `example.com`, `example.id`, atau `example.xyz`.
 
-```bash
-bash otomatisasi_snapotter.sh status
-bash otomatisasi_snapotter.sh cek
-bash otomatisasi_snapotter.sh restart
-bash otomatisasi_snapotter.sh log
-bash otomatisasi_snapotter.sh backup-db
-```
+Setelah instalasi berhasil, akses SnapOtter melalui domain tersebut. Login pertama menggunakan username `admin` dan password `admin`. SnapOtter kemudian meminta pengguna mengganti password administrator.
 
 
 ## Cara Pemakaian
