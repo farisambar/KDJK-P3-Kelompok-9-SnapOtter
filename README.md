@@ -59,7 +59,7 @@ Berbeda dengan layanan konversi yang sepenuhnya dijalankan pada server penyedia,
 | **Files** | Upload, penyimpanan, serta pengelolaan berkas |
 | **Automate** | Menyusun dan menyimpan rangkaian proses (*pipeline*) |
 
-Pada antarmuka SnapOtter versi 2.2.0 yang digunakan kelompok, katalog menampilkan **243 tools**. Namun , tidak semua tools itu bisa digunkan karena ada fitur fitur yang membutuhkan requirement VPS yang lebih tinggi.
+Pada antarmuka SnapOtter versi 2.2.0 yang digunakan kelompok, katalog menampilkan **243 tools**. Namun, tidak semua tools dapat dijalankan pada VPS ini karena sebagian fitur membutuhkan spesifikasi server yang lebih tinggi.
 
 **Batasan implementasi:** proyek ini menggunakan VPS **2 vCPU dan RAM 2 GB**, sehingga kami hanya bisa deployment untuk Tier Minimum dan pengujian difokuskan pada fitur non-AI, terutama gambar dan PDF. Fitur pemrosesan video berat serta model AI yang memerlukan memori lebih besar tidak menjadi fokus pengujian. Hal ini merujuk pada panduan resmi dari snapotter https://docs.snapotter.com/guide/low-resource.
 
@@ -553,7 +553,7 @@ Pada proyek ini, kelompok mencoba fitur Automate menggunakan tools seperti **Com
 ### Kekurangan dan Kendala Pengujian
 
 1. **Keterbatasan resource VPS.** Dengan spesifikasi 2 vCPU dan RAM 2 GB, kelompok melakukan penyesuaian batas penggunaan resource. Fitur yang membutuhkan pemrosesan berat, seperti video dan AI, belum diuji secara menyeluruh.
-2. **Kendala akses domain.** Pada pengujian awal, akses SnapOtter melalui domain sempat mengalami keterlambatan. Setelah HTTP/3 dinonaktifkan pada Caddy, akses melalui browser menjadi lebih lancar.
+2. **Kendala akses domain.** Pada pengujian awal, akses SnapOtter melalui domain sempat gagal. Setelah dilakukan penyesuaian konfigurasi Caddy dan pengujian ulang, akses HTTPS berhasil dengan status HTTP 200.
 3. **Batas jumlah file.** Saat mencoba mengunggah enam file sekaligus, aplikasi menampilkan error `reached files limit`. Hal ini sesuai dengan konfigurasi `MAX_BATCH_SIZE=5` yang digunakan kelompok.
 4. **Kendala pada Pipeline Builder.** Fitur Merge PDFs belum berhasil digunakan dalam pipeline ketika file diproses sebagai input terpisah. Namun, penggabungan PDF melalui tool Merge PDFs secara langsung berhasil dilakukan.
 5. **Kendala pada Files Library.** Ketika diuji, tombol Open File pada file gambar maupun PDF justru mengarahkan pengguna kembali ke halaman utama, bukan melihat detail file tersebut.
