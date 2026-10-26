@@ -170,31 +170,13 @@ curl --proto '=https' --tlsv1.2 -fsSLo docker-compose.yml \
 
 File `docker-compose.yml` ini memuat layanan SnapOtter, PostgreSQL, Redis, volume data, dan pemeriksaan kesehatan container.
 
-#### 4. Membuat file kredensial
-
-Buat file `.env` yang berisi password acak untuk PostgreSQL, Redis, dan administrator SnapOtter.
-
-```bash
-cd ~/snapotter
-sudo apt install -y openssl
-
-umask 077
-
-printf 'POSTGRES_PASSWORD=%s\nREDIS_PASSWORD=%s\nADMIN_PASSWORD=%s\n' \
-  "$(openssl rand -hex 32)" \
-  "$(openssl rand -hex 32)" \
-  "$(openssl rand -hex 32)" > .env
-
-chmod 600 .env
-```
-
-File `.env` menyimpan kredensial layanan
-
-#### 5. Mengoptimalkan penggunaan sumber daya
+#### 4. Mengoptimalkan penggunaan sumber daya
 
 Konfigurasi Compose bawaan memiliki batas memori yang lebih besar daripada RAM VPS yang digunakan. Oleh karena itu, dibuat file tambahan `compose.minimum.yml` untuk mengatur batas penggunaan sumber daya.
 
 ```bash
+cd ~/snapotter
+
 cat > compose.minimum.yml <<'YAML'
 services:
   SnapOtter:
@@ -204,7 +186,6 @@ services:
       - "127.0.0.1:1349:1349"
 
     environment:
-      DEFAULT_PASSWORD: ${ADMIN_PASSWORD:?ADMIN_PASSWORD belum diset}
       CONCURRENT_JOBS: "1"
       MAX_WORKER_THREADS: "2"
       MAX_BATCH_SIZE: "5"
@@ -233,7 +214,7 @@ services:
       --maxmemory-policy noeviction
       --maxmemory 64mb
       --appendonly yes
-      --requirepass ${REDIS_PASSWORD:?REDIS_PASSWORD belum diset}
+      --requirepass ${REDIS_PASSWORD:-snapotter}
 YAML
 ```
 
@@ -258,7 +239,7 @@ sudo docker compose \
   config --quiet
 ```
 
-#### 6. Menjalankan SnapOtter
+#### 5. Menjalankan SnapOtter
 
 Unduh image aplikasi dan layanan pendukung, kemudian jalankan container.
 
